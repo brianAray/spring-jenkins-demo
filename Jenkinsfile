@@ -4,10 +4,10 @@ pipeline {
     environment {
         // AWS setup
         AWS_DEFAULT_REGION = 'us-east-1'
-        S3_BUCKET = 'jenkins-demo-frontend-bucket' 
+        S3_BUCKET = 'revature-test-bucket-123' 
 
         // App Server setup
-        APP_SERVER_IP = '1.2.3.4' // Replace with actual IP
+        APP_SERVER_IP = '34.207.251.218' // Replace with actual IP
         APP_SERVER_USER = 'ec2-user'
         SSH_CREDENTIAL_ID = 'app-server-ssh-key' // ID of the credential in Jenkins
     }
