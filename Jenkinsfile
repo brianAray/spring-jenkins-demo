@@ -31,7 +31,8 @@ pipeline {
             steps {
                 dir('frontend') {
                     sh 'npm install'
-                    sh 'npm run build'
+                    // Inject Backend IP into React build
+                    sh "VITE_API_URL=http://${APP_SERVER_IP}:8080/api/items npm run build"
                 }
             }
         }
