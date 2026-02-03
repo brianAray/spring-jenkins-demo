@@ -39,8 +39,11 @@ pipeline {
         stage('Deploy Backend (EC2)') {
             steps {
                 sshagent([SSH_CREDENTIAL_ID]) {
+                    // Prepare directory setup
+                    sh "ssh -o StrictHostKeyChecking=no ${APP_SERVER_USER}@${APP_SERVER_IP} 'mkdir -p target'"
+
                     // Copy jar and Dockerfile
-                    sh "scp -o StrictHostKeyChecking=no backend/target/*.jar ${APP_SERVER_USER}@${APP_SERVER_IP}:/home/${APP_SERVER_USER}/app.jar"
+                    sh "scp -o StrictHostKeyChecking=no backend/target/*.jar ${APP_SERVER_USER}@${APP_SERVER_IP}:/home/${APP_SERVER_USER}/target/app.jar"
                     sh "scp -o StrictHostKeyChecking=no backend/Dockerfile ${APP_SERVER_USER}@${APP_SERVER_IP}:/home/${APP_SERVER_USER}/Dockerfile"
                     
                     // Run Docker commands on remote server
