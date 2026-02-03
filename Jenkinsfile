@@ -14,8 +14,8 @@ pipeline {
 
     tools {
         // defined in Jenkins global tool configuration
-        maven 'Maven 3.9.6' 
-        nodejs 'NodeJS 20'
+        maven 'Maven 3.9.12' 
+        nodejs 'NodeJS 24'
     }
 
     stages {
